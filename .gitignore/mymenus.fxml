@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.MenuBar?>
+
+<MenuBar 
+  xmlns="http://javafx.com/javafx/8.0.40"
+  xmlns:fx="http://javafx.com/fxml/1" 
+  fx:controller="application.MenubarController">
+  <menus>
+    <Menu 
+      mnemonicParsing="false" 
+      text="Books">
+      <items>
+        <MenuItem 
+          fx:id="checkOutBook" 
+          mnemonicParsing="false"
+          onAction="#checkOutBooks" 
+          text="Check Out" />
+		<MenuItem 
+          fx:id="checkInBook" 
+          mnemonicParsing="false"
+          onAction="#checkInBooks" 
+          text="Check In" />
+		<MenuItem 
+          fx:id="editBook" 
+          mnemonicParsing="false"
+          onAction="#editBooks" 
+          text="Edit Books" />
+      </items>
+    </Menu>
+    <Menu 
+      mnemonicParsing="false" 
+      text="Members">
+      <items>
+		<MenuItem 
+          fx:id="member" 
+          mnemonicParsing="false"
+          onAction="#Members" 
+          text="Search Members" />
+		<MenuItem 
+          fx:id="editMember" 
+          mnemonicParsing="false"
+          onAction="#editMembers" 
+          text="Edit Members" />
+      </items>
+    </Menu>
+	<Menu 
+      mnemonicParsing="false" 
+      text="Weekly Reports">
+      <items>
+		<MenuItem 
+          fx:id="overdueReport" 
+          mnemonicParsing="false"
+          onAction="#overdueReports" 
+          text="Overdue" />
+		<MenuItem 
+          fx:id="issuedReport" 
+          mnemonicParsing="false"
+          onAction="#issuedReports" 
+          text="Issued" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>
