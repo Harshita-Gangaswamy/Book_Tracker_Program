@@ -1,0 +1,86 @@
+package application;
+
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.collections.FXCollections;
+
+public class IssuedReportsController {
+	@FXML 
+    private TableView<Books> booksTable;
+
+    @FXML 
+    private TableColumn<Books, String> titleColumn;
+
+    @FXML 
+    private TableColumn<Books, String> authorColumn;
+
+    @FXML 
+    private TableColumn<Books, String> statusColumn;
+	
+	@FXML 
+    private TableColumn<Books, String> ISBNColumn;
+	
+	@FXML 
+    private TableColumn<Books, String> genreColumn;
+	
+	@FXML 
+    private TableColumn<Books, String> checkedDateColumn;
+	
+	@FXML 
+    private TableColumn<Books, String> dueDateColumn;
+	
+	@FXML 
+    private TableColumn<Books, Integer> daysLeftColumn;
+	
+	@FXML 
+    protected void initialize() {
+
+		PropertyValueFactory<Books, String> titleProperty = 
+          new PropertyValueFactory<Books, String>("title");
+      
+		PropertyValueFactory<Books, String> authorProperty = 
+          new PropertyValueFactory<Books, String>("author");
+      
+		PropertyValueFactory<Books, String> statusProperty = 
+          new PropertyValueFactory<Books, String>("status");
+		  
+		PropertyValueFactory<Books, String> ISBNProperty = 
+          new PropertyValueFactory<Books, String>("isbn");
+		  
+		PropertyValueFactory<Books, String> genreProperty = 
+          new PropertyValueFactory<Books, String>("genre");
+		  
+		PropertyValueFactory<Books, String> checkDateProperty = 
+          new PropertyValueFactory<Books, String>("checkDate");
+		  
+		PropertyValueFactory<Books, String> dueDateProperty = 
+          new PropertyValueFactory<Books, String>("dueDate");
+		
+		PropertyValueFactory<Books, Integer> daysLeftProperty = 
+		  new PropertyValueFactory<Books, Integer>("daysLeft");
+      
+		titleColumn.setCellValueFactory( titleProperty );
+		authorColumn.setCellValueFactory( authorProperty );
+		statusColumn.setCellValueFactory( statusProperty );
+		ISBNColumn.setCellValueFactory( ISBNProperty );
+		genreColumn.setCellValueFactory( genreProperty );
+		checkedDateColumn.setCellValueFactory( checkDateProperty );
+		dueDateColumn.setCellValueFactory( dueDateProperty );
+		daysLeftColumn.setCellValueFactory( daysLeftProperty );
+		
+		//gets the books that are checked out and reserved
+		DataSource data = new DataSource();
+		String filter = "Checked Out";
+		boolean overdue = false;
+		ObservableList<Books> tableItems = data.getOverdueIssuedBooks(filter, overdue);
+		booksTable.setItems( tableItems );
+    }
+
+}
