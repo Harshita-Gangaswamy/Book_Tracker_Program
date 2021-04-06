@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
+
+
+<AnchorPane 
+prefHeight="600.0" 
+prefWidth="800.0" 
+style="-fx-background-color: white;"
+xmlns:fx="http://javafx.com/fxml/1" 
+xmlns="http://javafx.com/javafx/8.0.40" 
+fx:controller="application.CheckInController">
+   <children>
+		<Text style="-fx-font-size: 30; -fx-fill: #6723A6;" textAlignment="CENTER"
+		text="Book Check In" layoutX = "280.0" layoutY = "30.0"/>
+		<TextField  prefWidth="380"	layoutX="10.0" layoutY="40.0" fx:id="book" />
+		<ComboBox fx:id="searchChoice" layoutX="400.0" layoutY="40.0" prefWidth="80.0" promptText="choose">
+			<items>
+			<FXCollections fx:factory="observableArrayList">
+			  <String fx:id="Title" />
+			  <String fx:id="Author" />
+			  <String fx:id="Status" />
+			  <String fx:id="ISBN" />
+			  <String fx:id="Genre" />
+			</FXCollections>
+		  </items>
+		</ComboBox>
+		<Button fx:id="findBtn" 	
+			layoutX="500.0"	layoutY="40.0" 		
+			mnemonicParsing="false" text="SEARCH" textAlignment="CENTER"
+			onAction="#findBooks" />
+		<Button fx:id="checkInBtn" 	
+			layoutX="580.0"	layoutY="40.0" 		
+			mnemonicParsing="false" text="Check In" textAlignment="CENTER"
+			onAction="#checkInBooks" />
+		<Button fx:id="refreshBtn" 	
+			layoutX="660.0"	layoutY="40.0" 		
+			mnemonicParsing="false" text="Refresh" textAlignment="CENTER"
+			onAction="#refreshTable" />
+		<TableView 
+		  fx:id="booksTable" 
+		  editable="true" 
+		  layoutX="10.0" 
+		  layoutY="80.0" 
+		  prefHeight="300.0" 
+		  prefWidth="780.0">
+			 <columns>
+				<TableColumn 
+				fx:id="titleColumn" 
+				prefWidth="280.0" 
+				text="Title" />
+				<TableColumn 
+				fx:id="authorColumn" 
+				prefWidth="150.0" 
+				text="Author" />
+				<TableColumn 
+				fx:id="statusColumn" 
+				prefWidth="120.0" 
+				text="Status" />
+				<TableColumn 
+				fx:id="ISBNColumn" 
+				prefWidth="115.0" 
+				text="ISBN" />
+				<TableColumn 
+				fx:id="genreColumn" 
+				prefWidth="110.0" 
+				text="Genre" />
+			 </columns>
+		</TableView>
+   </children>
+</AnchorPane>
